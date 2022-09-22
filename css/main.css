@@ -667,7 +667,7 @@ body {
     transition: opacity var(--trans-dur-time-fun), visibility var(--trans-dur-time-fun);
 }
 
-.backdrop.is-hidde {
+.backdrop.is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -702,14 +702,8 @@ body {
     padding: 0;
 }
 
-.modal-input-box {
-    position: relative;
-}
-
-.modal-inf-icon {
-    position: absolute;
-    top: 11px;
-    left: 12px;
+.modal-close-btn:focus {
+    fill: var(--accent-color);
 }
 
 .modal-title {
@@ -723,7 +717,7 @@ body {
     color: var(--main-black);
 }
 
-.modal-form-inputs-container {
+.modal-form-fields-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -739,6 +733,11 @@ body {
     color: var(--grey-color);
 }
 
+.modal-input-box {
+    position: relative;
+}
+
+
 .modal-input-field {
     width: 100%;
     height: 40px;
@@ -746,6 +745,25 @@ body {
 
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+    transition: border-color var(--trans-dur-time-fun);
+}
+
+.modal-input-field:focus,
+.modal-form-comment:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.modal-form-inf-icon {
+    position: absolute;
+    top: 11px;
+    left: 12px;
+
+    transition: fill var(--trans-dur-time-fun);
+}
+
+.modal-input-field:focus+.modal-form-inf-icon {
+    fill: var(--accent-color);
 }
 
 .modal-form-comment {
@@ -756,10 +774,13 @@ body {
     padding: 12px 16px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+
+    transition: border-color var(--trans-dur-time-fun);
 }
 
 .modal-form-check-field {
     display: flex;
+    align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -772,8 +793,44 @@ body {
     color: var(--grey-color);
 }
 
+.modal-form-check {
+    appearance: none;
+}
+
+.modal-form-own-check {
+    border-radius: 3px;
+    border: 1px solid var(--main-black);
+    margin-right: 7px;
+}
+
+.modal-form-own-check-icon {
+    display: none;
+}
+
+.modal-form-check:checked+.modal-form-own-check .modal-form-own-check-icon {
+    display: block;
+}
+
+.modal-form-check:checked+.modal-form-own-check {
+    border: none;
+}
+
 .modal-form-check-link {
+    position: relative;
+
     color: var(--accent-color);
+}
+
+.modal-form-check-link::after {
+    content: '';
+
+    position: absolute;
+    top: 70%;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-color);
 }
 
 .modal-form-submit {
